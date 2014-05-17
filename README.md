@@ -12,6 +12,12 @@ There is some settings in the head of "game/game.js" as:
     ROUNDS - number of rounds
     PLAYERS_COUNT - count of players
     COLORS - array of basic colors for snakes
+        default:
+            1 - Left/Right Arrow
+            2 - Q, A
+            3 - V, B
+            4 - Backspace, `
+            5 - ' ]
     UCOLORS - array of colors for snakes. When snake is under the field UCOLORS using instead of COLORS
     CONTROLS - key codes for left and right (keyCode of keydown event)
 
