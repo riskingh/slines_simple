@@ -1,6 +1,6 @@
 //SETTINGS
 ROUNDS = 50;
-PLAYERS_COUNT = 4;
+PLAYERS_COUNT = 2;
 COLORS = ["#00f", "#f00","#006400", "#000", "orange"];
 UCOLORS = ["#88f", "#f88","#3cb371", "#666", "white"];
 CONTROLS = [
@@ -37,13 +37,10 @@ var Game = function (canvas, table) {
             return false;
         var len = this.snakes[s].points.length;
         var ind = false;
-        ind |= (this.snakes[s].pos.x < 0);
-        ind |= (this.snakes[s].pos.x > 640);
-        ind |= (this.snakes[s].pos.y < 0);
-        ind |= (this.snakes[s].pos.y > 480);
-        /*for (var i = 0; i < this.walls.length; ++i) {
-            ind |= inter(this.snakes[s].points[len - 1], this.snakes[s].points[len - 2], this.walls[i], this.walls[(i + 1) % 4]);
-        }*/
+        ind |= (this.snakes[s].position.x < 0);
+        ind |= (this.snakes[s].position.x > 640);
+        ind |= (this.snakes[s].position.y < 0);
+        ind |= (this.snakes[s].position.y > 480);
         for (var i = 0; i < this.players_count; ++i) {
             var d = 1;
             if (i == s) {
@@ -51,7 +48,7 @@ var Game = function (canvas, table) {
             }
             for (var j = 0; j + d < this.snakes[i].points.length; ++j) {
                 if (!this.snakes[i].points[j].fake && !this.snakes[i].points[j + 1].fake)
-                    ind |= inter(this.snakes[s].points[len - 1], this.snakes[s].points[len - 2], this.snakes[i].points[j], this.snakes[i].points[j + 1]);
+                    ind |= segmentsIntersect(this.snakes[s].points[len - 1], this.snakes[s].points[len - 2], this.snakes[i].points[j], this.snakes[i].points[j + 1]);
             }
         }
         return ind;
@@ -59,7 +56,6 @@ var Game = function (canvas, table) {
 
     this.update = function (deltas) {
         var i, score;
-        //console.log(this.players_count);
         for (i = 0; i < this.players_count; ++i) {
             if (this.alive[i] == 1)
                 this.snakes[i].update(deltas[i]);
