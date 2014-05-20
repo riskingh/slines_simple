@@ -1,7 +1,7 @@
 //SETTINGS
 ROUNDS = 50;
 PLAYERS_COUNT = 2;
-COLORS = ["#00f", "#f00","#006400", "#000", "orange"];
+COLORS = ["#00f", "#f00","#006400", "#000", "orange", "#000"];
 UCOLORS = ["#88f", "#f88","#3cb371", "#666", "white"];
 CONTROLS = [
     [37, 39],
@@ -9,7 +9,7 @@ CONTROLS = [
     [86, 66],
     [8, 192],
     [222, 221],
-];// <- ->; ' ]; vb; qa
+];
 
 var Game = function (canvas, table) {
     var name, score, updiv;

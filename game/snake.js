@@ -1,16 +1,16 @@
 /**
  * Declaration of Snake, the main structure we will operate with
  */
-var Snake = function(canvas, color, canvas_color) {
+var Snake = function(canvas, color, ucolor) {
 
     /* Canvas attributes */
     this.canvas        = canvas;
     this.canvas_width  = parseInt(canvas.prop("width"), 10);
     this.canvas_height = parseInt(canvas.prop("height"), 10);
-    this.canvas_color  = canvas_color;
 
     /* Initaial values of Snake's attributes */
     this.color    = color;                                                // color of the snake
+    this.ucolor   = ucolor;                                               // color of snake, while it's digging a hole
     this.position = new Point(randNumber(100, this.canvas_width - 100),
                               randNumber(100, this.canvas_height - 100)); // initial position of the snake
     this.angle    = Math.random() * Math.PI * 2;                          // initial direction of movement
@@ -59,7 +59,7 @@ var Snake = function(canvas, color, canvas_color) {
 
             // draw invisible the part of the Snake from previous position to current
             this.canvas.drawLine({
-                strokeStyle: this.canvas_color,          // the hole is invisible, so the colour is equal to the canvas colour
+                strokeStyle: this.ucolor,                // the hole is invisible, so the colour is equal to the canvas colour
                 strokeWidth: 5,                          // width of the Snake
                 rounded: true,                           // our Snake should look pretty
                 x1: previous.x, y1: previous.y,          // one end of the segment
